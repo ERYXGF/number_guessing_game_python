@@ -1,0 +1,1 @@
+"""Contains the core game logic. The main game loop lives here: generating the secret number, managing the attempt counter, calling hint functions, checking for win or loss, returning the result. This is the largest file."""

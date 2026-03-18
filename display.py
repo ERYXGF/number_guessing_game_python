@@ -1,0 +1,1 @@
+"""Contains all terminal output functions: the welcome screen, the difficulty menu, the board display after each guess, the win screen, the loss screen and the scores display. Nothing in this file does any logic — it only prints."""

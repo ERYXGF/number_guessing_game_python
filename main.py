@@ -1,0 +1,1 @@
+""" Entry point only. Imports from all other files, runs the startup sequence and hands control to the game loop. Should be under 30 lines."""

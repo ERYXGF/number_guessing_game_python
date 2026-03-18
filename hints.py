@@ -1,0 +1,1 @@
+"""Contains exclusively the hint functions. The higher/lower hint and the hot/cold proximity hint are separate functions here. Keeping them isolated makes them easy to modify without touching game logic."""

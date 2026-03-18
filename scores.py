@@ -1,0 +1,1 @@
+"""Contains everything related to the high score system: loading scores from JSON, saving a new score, checking if a result is a new record, and retrieving the current record for a given difficulty."""
