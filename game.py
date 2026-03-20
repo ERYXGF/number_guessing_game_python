@@ -2,6 +2,9 @@
 
 #Random module for the core function:
 import random
+#Import higher/lower func and cold/hot func from hints.py:
+from hints import higher_lower
+from hints import hot_cold
 
 #"Difficulty" Dictionnary that defines each level of difficulty (number of attempts, range and hint precision/thresholds):
 difficulty = {
@@ -61,6 +64,8 @@ def core_loop(level):
         #Check how many attempts are left
             if attempts > 0:    
                 print("You have guessed incorrectly. Please guess again: ")
+                print(hot_cold(rand_num, guess, level))
+                print(higher_lower(rand_num, guess))
             else:
                 print("You have exceeded the total number of guesses you had. Play another round to try your luck again.")
                 return False
