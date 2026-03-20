@@ -12,3 +12,23 @@ def higher_lower(rand_num, guess):
     #Check if the guess is equal to the correct value:
     else:
         return("Your guess was correct ! You won !")
+    
+#Function that hints using the hot/cold proximity parameters:
+def hot_cold(rand_num, guess, level):
+    #Calculate the absolute difference between rand_num and guess:
+    difference = abs(guess-rand_num)
+    #Check if difference is in the first zone:
+    if difference <= level["thresholds"][0][0]:
+        return level["thresholds"][0][1]
+    #Check if difference is in the second zone:
+    elif difference <= level["thresholds"][1][0]:
+        return level["thresholds"][1][1]
+    #Check if difference is in the third zone:
+    elif difference <= level["thresholds"][2][0]:
+        return level["thresholds"][2][1]
+    #Check if difference is in the fourth zone:
+    elif difference <= level["thresholds"][3][0]:
+        return level["thresholds"][3][1]
+    #Check if difference is in neither zone:
+    else:
+        return ("Glacial")
