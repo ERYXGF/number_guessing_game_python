@@ -7,8 +7,8 @@ def higher_lower(rand_num, guess):
     if guess > rand_num:
         return("The random number is lower than your guess ")
     #Check if guess is lower than the correct value:
-    elif guess == rand_num:
-        return("The random number is higher th your guess ")
+    elif guess < rand_num:
+        return("The random number is higher than your guess ")
     #Check if the guess is equal to the correct value:
     else:
         return("Your guess was correct ! You won !")
