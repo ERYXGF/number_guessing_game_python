@@ -2,9 +2,16 @@
 
 #Random module for the core function:
 import random
+
 #Import higher/lower func and cold/hot func from hints.py:
 from hints import higher_lower
 from hints import hot_cold
+
+#Import all the functions in display.py to be able to use them here:
+from display import welcome_screen, difficulty_display, board_display, win_screen, loss_screen, score_display, scores_before_game
+
+#Imports score.py to be used here:
+from scores import check_record
 
 #"Difficulty" Dictionnary that defines each level of difficulty (number of attempts, range and hint precision/thresholds):
 difficulty = {
@@ -41,11 +48,12 @@ difficulty = {
 }
 
 #Function that establishes the core game loop: generates random number, asks for a guess in while loop, checks if its correct, decrements attempts and detects losses:
-def core_loop(level):
+def core_loop(level, difficulty):
     #Generates + stores random number:
     rand_num = random.randrange(*level["range"])
     #Establish attempt counter:
     attempts = level["attempts"]
+    #While loop that encompasses everything:
     while True:
         #Get the user's guess
         while True:
@@ -56,16 +64,17 @@ def core_loop(level):
                 print("This is not a valid guess. Please guess again: ")
         #Take off guess from the attempt counter   
         attempts -= 1
+
         #Check if the users guess is right:
         if guess == rand_num:
-            print("You have guessed correctly !")
+            win_screen(difficulty, attempts, new_record = check_record(attempts+1, difficulty))
             return True
         else:
+            #Define hint to be used in the board_display function:
+            hint = (f"{higher_lower(rand_num, guess)}, {hot_cold(rand_num, guess, level)}")
         #Check how many attempts are left
             if attempts > 0:    
-                print("You have guessed incorrectly. Please guess again: ")
-                print(hot_cold(rand_num, guess, level))
-                print(higher_lower(rand_num, guess))
+                board_display(level["range"][1], attempts, hint)
             else:
-                print("You have exceeded the total number of guesses you had. Play another round to try your luck again.")
+                loss_screen(rand_num, abs(guess-rand_num))
                 return False
